@@ -16,12 +16,11 @@
       background-color: #f9f5f0;
     }
     #cardCanvas {
-      max-width: 400px;
       width: 100%;
+      max-width: 100%;
       height: auto;
-      margin: 30px auto;
+      margin: 20px auto;
       display: block;
-      border: 1px solid #ccc;
     }
     input {
       padding: 10px;
@@ -55,8 +54,10 @@
     image.src = 'معايدة-الموظفين-01.png';
 
     image.onload = () => {
-      canvas.width = image.width;
-      canvas.height = image.height;
+      const scale = 0.5;
+      canvas.width = image.width * scale;
+      canvas.height = image.height * scale;
+      ctx.scale(scale, scale);
       ctx.drawImage(image, 0, 0);
     };
 
@@ -82,4 +83,3 @@
   </script>
 </body>
 </html>
-
