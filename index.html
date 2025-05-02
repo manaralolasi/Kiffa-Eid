@@ -72,15 +72,11 @@
 
     function downloadCard(callback) {
       const card = document.getElementById('card');
-      const clone = card.cloneNode(true);
-      clone.style.transform = "scale(1)";
-      clone.style.position = "absolute";
-      clone.style.left = "-9999px";
-      document.body.appendChild(clone);
+      
 
-      html2canvas(clone, { useCORS: true, allowTaint: true, backgroundColor: null }).then(canvas => {
+      html2canvas(card, { useCORS: true, allowTaint: true, backgroundColor: null }).then(canvas => {
         const image = canvas.toDataURL('image/png');
-        document.body.removeChild(clone);
+        
 
         if (callback) {
           callback(image);
