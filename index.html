@@ -16,6 +16,7 @@
       background-color: #f9f5f0;
     }
     #cardCanvas {
+      max-width: 400px;
       width: 100%;
       height: auto;
       margin: 30px auto;
@@ -65,7 +66,7 @@
       ctx.font = 'bold 40px Tajawal';
       ctx.fillStyle = '#5cc4b9';
       ctx.textAlign = 'center';
-      ctx.fillText(nameInput.value, canvas.width / 2, canvas.height - 135);
+      ctx.fillText(nameInput.value, canvas.width / 2, canvas.height - 180);
     });
 
     function generateCard() {
@@ -81,3 +82,4 @@
   </script>
 </body>
 </html>
+
