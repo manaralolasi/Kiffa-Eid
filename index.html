@@ -34,6 +34,7 @@
       font-size: 20px;
       color: #5cc4b9;
       font-weight: bold;
+      z-index: 10;
     }
     input {
       padding: 10px;
@@ -47,12 +48,6 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .share-buttons {
-      margin-top: 20px;
-    }
-    .share-buttons button {
-      margin: 5px;
-    }
   </style>
 </head>
 <body>
@@ -64,7 +59,6 @@
 
   <div id="card">
     <div id="nameOverlay"></div>
-    <div id="nameCanvasLayer"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -77,45 +71,32 @@
     });
 
     function downloadCard(callback) {
-  const card = document.getElementById('card');
-  html2canvas(card, { useCORS: true, allowTaint: true, backgroundColor: null }).then(canvas => {
-    const image = canvas.toDataURL('image/png');
-    if (callback) {
-      callback(image);
-    } else {
-      const link = document.createElement('a');
-      link.download = 'معايدة-كفة.png';
-      link.href = image;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      const message = document.getElementById('successMessage'); message.style.display = 'block'; message.style.opacity = 0; setTimeout(() => { message.style.opacity = 1; }, 50);
-    }
-  });
-}
+      const card = document.getElementById('card');
+      const clone = card.cloneNode(true);
+      clone.style.transform = "scale(1)";
+      clone.style.position = "absolute";
+      clone.style.left = "-9999px";
+      document.body.appendChild(clone);
+
+      html2canvas(clone, { useCORS: true, allowTaint: true, backgroundColor: null }).then(canvas => {
+        const image = canvas.toDataURL('image/png');
+        document.body.removeChild(clone);
+
+        if (callback) {
+          callback(image);
+        } else {
+          const link = document.createElement('a');
+          link.download = 'معايدة-كفة.png';
+          link.href = image;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          const message = document.getElementById('successMessage');
+          message.style.display = 'block';
+          message.style.opacity = 0;
+          setTimeout(() => { message.style.opacity = 1; }, 50);
+        }
       });
-    }
-
-    `;
-        window.open(whatsappUrl, '_blank');
-      });
-    }
-
-    `;
-      window.open(linkedinUrl, '_blank');
-    }
-
-    
-
-    
-
-    function dataURLtoBlob(dataurl) {
-      const arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-      while (n--) {
-        u8arr[n] = bstr.charCodeAt(n);
-      }
-      return new Blob([u8arr], { type: mime });
     }
   </script>
 </body>
