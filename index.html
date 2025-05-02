@@ -2,8 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title> بطاقة معايدة كِفّة  </title>
+  <title>معايدة كِفّة</title>
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     body {
       margin: 0;
       font-family: 'Frutiger LT Arabic', sans-serif;
@@ -11,8 +16,9 @@
       background-color: #f9f5f0;
     }
     #card {
+      max-width: 100%;
       position: relative;
-      width: 400px;
+      width: 90vw;
       height: 600px;
       margin: 30px auto;
       background-image: url('معايدة-الموظفين-01.png');
@@ -54,7 +60,7 @@
   <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
   <br>
   <button onclick="downloadCard()">تحميل البطاقة</button>
-  <p id="successMessage" style="color: green; font-weight: bold; display: none; margin-top: 10px;">تم حفظ البطاقة بنجاح 🎉</p>
+  <p id="successMessage" style="color: green; font-weight: bold; display: none; margin-top: 10px; animation: fadeIn 0.5s ease-in-out;">تم حفظ البطاقة بنجاح 🎉</p>
 
   <div id="card">
     <div id="nameOverlay"></div>
@@ -84,7 +90,7 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      document.getElementById('successMessage').style.display = 'block';
+      const message = document.getElementById('successMessage'); message.style.display = 'block'; message.style.opacity = 0; setTimeout(() => { message.style.opacity = 1; }, 50);
     }
   });
 }
@@ -115,4 +121,3 @@
   </script>
 </body>
 </html>
-
