@@ -42,11 +42,12 @@
   </div>
   <h2 style="color: white;">اكتب اسمك للمعايدة ✨</h2>
   <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
-  <br>
-  <button onclick="generateCard()">تحميل البطاقة</button>
+  
   <p id="successMessage" style="color: green; font-weight: bold; display: none; margin-top: 10px; animation: fadeIn 0.5s ease-in-out;">تم حفظ البطاقة بنجاح 🎉</p>
 
   <canvas id="cardCanvas"></canvas>
+<br>
+<button onclick="generateCard()">تحميل البطاقة</button>
 
   <script>
     const canvas = document.getElementById('cardCanvas');
@@ -57,7 +58,7 @@
     image.src = 'معايدة-الموظفين-01.png';
 
     image.onload = () => {
-      const scale = 0.5;
+      const scale = window.innerWidth < 768 ? 0.4 : 0.25;
       canvas.width = image.width * scale;
       canvas.height = image.height * scale;
       ctx.scale(scale, scale);
