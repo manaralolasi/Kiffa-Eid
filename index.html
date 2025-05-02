@@ -17,7 +17,7 @@
     }
     #cardCanvas {
       width: 100%;
-      max-width: 300px;
+      max-width: 768px;
       height: auto;
       margin: 10px auto;
       display: block;
@@ -62,7 +62,7 @@
     image.src = 'معايدة-الموظفين-01.png';
 
     image.onload = () => {
-      const scale = window.innerWidth < 768 ? 0.5 : 0.35;
+      const scale = 1;
       canvas.width = image.width * scale;
       canvas.height = image.height * scale;
       ctx.scale(scale, scale);
@@ -75,7 +75,7 @@
       ctx.font = 'bold 40px Tajawal';
       ctx.fillStyle = '#5cc4b9';
       ctx.textAlign = 'center';
-      ctx.fillText(nameInput.value, canvas.width / 2, canvas.height - 180);
+      ctx.fillText(nameInput.value, canvas.width / 2, canvas.height - 250);
     });
 
     function generateCard() {
@@ -91,3 +91,4 @@
   </script>
 </body>
 </html>
+
