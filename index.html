@@ -63,6 +63,7 @@
     <button onclick="shareOnWhatsApp()">مشاركة على واتساب</button>
     <button onclick="shareOnLinkedIn()">مشاركة على لينكدإن</button>
     <button onclick="shareOnSnapchat()">مشاركة على سناب شات</button>
+    <button onclick="shareOnInstagram()">مشاركة على إنستقرام</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -93,8 +94,6 @@
 
     function shareOnWhatsApp() {
       downloadCard((image) => {
-        const blob = dataURLtoBlob(image);
-        const file = new File([blob], 'معايدة-كفة.png', { type: 'image/png' });
         const message = encodeURIComponent('معايدة من كِفّة 🌟');
         const whatsappUrl = `https://wa.me/?text=${message}`;
         window.open(whatsappUrl, '_blank');
@@ -111,6 +110,10 @@
       alert('لحفظ الصورة شاركها يدويًا عبر تطبيق Snapchat بعد تحميل البطاقة 🙏');
     }
 
+    function shareOnInstagram() {
+      alert('إنستقرام لا يدعم المشاركة المباشرة من المتصفح. احفظ البطاقة وشاركها يدويًا من تطبيق Instagram 🌸');
+    }
+
     function dataURLtoBlob(dataurl) {
       const arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
@@ -122,4 +125,3 @@
   </script>
 </body>
 </html>
-
