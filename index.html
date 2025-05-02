@@ -11,7 +11,7 @@
 
     body {
       margin: 0;
-      font-family: 'Frutiger LT Arabic', sans-serif;
+      font-family: 'Tajawal', sans-serif;
       text-align: center;
       background-color: #f9f5f0;
     }
@@ -64,9 +64,8 @@
 
   <div id="card">
     <div id="nameOverlay"></div>
+    <div id="nameCanvasLayer"></div>
   </div>
-
-  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
@@ -79,7 +78,7 @@
 
     function downloadCard(callback) {
   const card = document.getElementById('card');
-  html2canvas(card, { useCORS: true, allowTaint: true }).then(canvas => {
+  html2canvas(card, { useCORS: true, allowTaint: true, backgroundColor: null }).then(canvas => {
     const image = canvas.toDataURL('image/png');
     if (callback) {
       callback(image);
