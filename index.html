@@ -17,10 +17,13 @@
     }
     #cardCanvas {
       width: 100%;
-      max-width: 100%;
+      max-width: 300px;
       height: auto;
-      margin: 20px auto;
+      margin: 10px auto;
       display: block;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     input {
       padding: 10px;
@@ -45,9 +48,10 @@
   
   <p id="successMessage" style="color: green; font-weight: bold; display: none; margin-top: 10px; animation: fadeIn 0.5s ease-in-out;">تم حفظ البطاقة بنجاح 🎉</p>
 
-  <canvas id="cardCanvas"></canvas>
-<br>
-<button onclick="generateCard()">تحميل البطاقة</button>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <canvas id="cardCanvas"></canvas>
+    <button onclick="generateCard()" style="margin-top: 15px;">تحميل البطاقة</button>
+  </div>
 
   <script>
     const canvas = document.getElementById('cardCanvas');
@@ -58,7 +62,7 @@
     image.src = 'معايدة-الموظفين-01.png';
 
     image.onload = () => {
-      const scale = window.innerWidth < 768 ? 0.4 : 0.25;
+      const scale = window.innerWidth < 768 ? 0.5 : 0.35;
       canvas.width = image.width * scale;
       canvas.height = image.height * scale;
       ctx.scale(scale, scale);
